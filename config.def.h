@@ -93,27 +93,81 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+#define GRUVBOX_DARK0 "#282828"
+#define GRUVBOX_DARK1 "#3c3836"
+#define GRUVBOX_DARK2 "#504945"
+#define GRUVBOX_DARK3 "#665C54"
+#define GRUVBOX_DARK4 "#7C6F64"
+#define GRUVBOX_GRAY "#928374"
+#define GRUVBOX_LIGHT0 "#FBF1C7"
+#define GRUVBOX_LIGHT1 "#EBDBB2"
+#define GRUVBOX_LIGHT2 "#D5C4A1"
+#define GRUVBOX_LIGHT3 "#BDAE93"
+#define GRUVBOX_LIGHT4 "#A89984"
+#define GRUVBOX_BRIGHT_RED "#FB4934"
+#define GRUVBOX_BRIGHT_GREEN "#B8BB26"
+#define GRUVBOX_BRIGHT_YELLOW "#FABD2F"
+#define GRUVBOX_BRIGHT_BLUE "#83A598"
+#define GRUVBOX_BRIGHT_PURPLE "#D3869B"
+#define GRUVBOX_BRIGHT_AQUA "#8EC07C"
+#define GRUVBOX_BRIGHT_ORANGE "#FE8019"
+#define GRUVBOX_NEUTRAL_RED "#CC241D"
+#define GRUVBOX_NEUTRAL_GREEN "#98971A"
+#define GRUVBOX_NEUTRAL_YELLOW "#D79921"
+#define GRUVBOX_NEUTRAL_BLUE "#458588"
+#define GRUVBOX_NEUTRAL_PURPLE "#B16286"
+#define GRUVBOX_NEUTRAL_AQUA "#689D6A"
+#define GRUVBOX_NEUTRAL_ORANGE "#D65D0E"
+#define GRUVBOX_FADED_RED "#9D0006"
+#define GRUVBOX_FADED_GREEN "#79740E"
+#define GRUVBOX_FADED_YELLOW "#B57614"
+#define GRUVBOX_FADED_BLUE "#076678"
+#define GRUVBOX_FADED_PURPLE "#8F3F71"
+#define GRUVBOX_FADED_AQUA "#427B58"
+#define GRUVBOX_FADED_ORANGE "#AF3A03"
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+#if defined _LIGHT
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	[0] = GRUVBOX_LIGHT0,
+	[1] = GRUVBOX_NEUTRAL_RED,
+	[2] = GRUVBOX_NEUTRAL_GREEN,
+	[3] = GRUVBOX_NEUTRAL_YELLOW,
+	[4] = GRUVBOX_NEUTRAL_BLUE,
+	[5] = GRUVBOX_NEUTRAL_PURPLE,
+	[6] = GRUVBOX_NEUTRAL_AQUA,
+	[7] = GRUVBOX_DARK4,
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	[8] = GRUVBOX_GRAY,
+	[9] = GRUVBOX_FADED_RED,
+	[10] = GRUVBOX_FADED_GREEN,
+	[11] = GRUVBOX_FADED_YELLOW,
+	[12] = GRUVBOX_FADED_BLUE,
+	[13] = GRUVBOX_FADED_PURPLE,
+	[14] = GRUVBOX_FADED_AQUA,
+	[15] = GRUVBOX_DARK1,
+#else /* _LIGHT */
+	/* 8 normal colors */
+	[0] = GRUVBOX_DARK0,
+	[1] = GRUVBOX_NEUTRAL_RED,
+	[2] = GRUVBOX_NEUTRAL_GREEN,
+	[3] = GRUVBOX_NEUTRAL_YELLOW,
+	[4] = GRUVBOX_NEUTRAL_BLUE,
+	[5] = GRUVBOX_NEUTRAL_PURPLE,
+	[6] = GRUVBOX_NEUTRAL_AQUA,
+	[7] = GRUVBOX_LIGHT4,
+
+	/* 8 bright colors */
+	[8] = GRUVBOX_GRAY,
+	[9] = GRUVBOX_BRIGHT_RED,
+	[10] = GRUVBOX_BRIGHT_GREEN,
+	[11] = GRUVBOX_BRIGHT_YELLOW,
+	[12] = GRUVBOX_BRIGHT_BLUE,
+	[13] = GRUVBOX_BRIGHT_PURPLE,
+	[14] = GRUVBOX_BRIGHT_AQUA,
+	[15] = GRUVBOX_LIGHT1,
+#endif /* _LIGHT */
 
 	[255] = 0,
 
@@ -129,10 +183,10 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 258;
-unsigned int defaultbg = 259;
-unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 15;
+unsigned int defaultbg = 0;
+unsigned int defaultcs = 15;
+static unsigned int defaultrcs = 0;
 
 /*
  * Default shape of cursor
